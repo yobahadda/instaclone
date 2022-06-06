@@ -4,11 +4,21 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img class="rounded-circle" src="/img/profile.jpg" alt="">
+            <img class="rounded-circle w-100" src="{{$user->profile->profileImage()}}" alt="">
         </div>
         <div class="pt-5 col-9 ">
-            <div class="d-flex justify-content-between align-baseline"><h1>{{ $user->username }}</h1>
-                <a href="/p/create" >Add new post</a></div>
+            <div class="d-flex justify-content-between align-baseline">
+
+             <div class="d-flex align-items-center pb-3">
+                 <div class="h4">{{ $user->username }}</div>
+
+                 <follow-button user-id="{{ $user->id }}"></follow-button>
+             </div>
+
+                @can('update',$user->profile)
+                    <a href="/p/create" >Add new post</a>
+                @endcan
+            </div>
 
            @can('update',$user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit profile</a>
