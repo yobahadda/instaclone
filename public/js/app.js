@@ -5375,12 +5375,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['userId'],
+  props: ['userId', 'follows'],
+  data: function data() {
+    return {
+      status: this.follows
+    };
+  },
   methods: {
     followUser: function followUser() {
+      var _this = this;
+
       axios.post('/follow/' + this.userId).then(function (response) {
-        alert(response.data);
+        _this.status = !_this.status;
+      })["catch"](function (errors) {
+        if (errors.response.status == 401) {
+          window.location = '/login';
+        }
       });
+    }
+  },
+  computed: {
+    buttonText: function buttonText() {
+      console.log(this.status);
+      return this.status ? 'Unfollow' : 'Follow';
     }
   }
 });
@@ -27995,11 +28012,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      { staticClass: "btn btn-primary ms-4", on: { click: _vm.followUser } },
-      [_vm._v("Follow")]
-    ),
+    _c("button", {
+      staticClass: "btn btn-primary ms-4",
+      domProps: { textContent: _vm._s(_vm.buttonText) },
+      on: { click: _vm.followUser },
+    }),
   ])
 }
 var staticRenderFns = []
