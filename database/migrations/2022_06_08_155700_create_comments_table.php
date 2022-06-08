@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('body');
             $table->string('reply');
             $table->timestamps();
 
+            $table->index('user_id');
             $table->index('post_id');
         });
     }
