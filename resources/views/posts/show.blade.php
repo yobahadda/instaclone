@@ -36,8 +36,21 @@
                                 <img class="rounded-circle w-100" src="{{$comment->user->profile->profileImage()}}" alt="" style="max-width: 40px">
                             </div>
 
+                            <div class="d-flex align-items-baseline">
                                 <p class="fw-bold pe-2"> {{$comment->user->username}} :</p>
-                                <p> {{$comment->body}}</p>
+                                <p > {{$comment->body}}</p>
+
+                                @if($comment->user_id == auth()->user()->id)
+                                    <form  action="/c/delete/{{$comment->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="ms-3 btn btn-primary" >Delete</button>
+                                    </form>
+
+
+                                @endif
+
+                            </div>
 
                         </div>
 

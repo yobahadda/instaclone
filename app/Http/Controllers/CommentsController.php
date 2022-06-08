@@ -26,10 +26,19 @@ class CommentsController extends Controller
             'user_id' =>  auth()->user()->id,
             'post_id' =>  $post_id,
 
-
         ]);
 
         return redirect('/p/' .  $post_id);
 
     }
+
+    public function delete($id)
+    {
+
+        Comment::find($id)->delete();
+
+      return redirect()->back();;;
+
+    }
+
 }

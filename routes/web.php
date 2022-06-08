@@ -25,6 +25,7 @@ Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
 
 Route::post('follow/{user}', [App\Http\Controllers\FolllowsController::class, 'store']);
 
+Route::delete('c/delete/{id}',  [App\Http\Controllers\CommentsController::class,'delete']);
 
 Route::post('/c', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');;
 
