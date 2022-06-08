@@ -25,6 +25,11 @@ Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
 
 Route::post('follow/{user}', [App\Http\Controllers\FolllowsController::class, 'store']);
 
+Route::get('/c/create', [App\Http\Controllers\CommentsController::class, 'create']);
+
+Route::post('/c', [App\Http\Controllers\CommentsController::class, 'store']);
+
+
 Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
 
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);

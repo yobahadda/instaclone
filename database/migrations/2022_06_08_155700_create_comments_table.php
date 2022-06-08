@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('user_id');
             $table->string('body');
-            $table->string('reply');
+
             $table->timestamps();
 
             $table->index('user_id');
