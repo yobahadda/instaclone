@@ -21,6 +21,8 @@
                         </span>
                         {{$post->caption}}
                     </p>
+
+
                 </div>
             </div>
         </div>

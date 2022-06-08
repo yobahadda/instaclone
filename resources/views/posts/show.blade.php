@@ -30,6 +30,17 @@
                         {{$post->caption}}
                     </p>
             </div>
+                <div>
+
+                    @foreach($post->comments as $comment)
+
+                   <p> {{$comment->body}}</p>
+                        <p class="ps-4"> {{$comment->reply}}</p>
+
+                    @endforeach
+
+
+                </div>
             </div>
     </div>
 </div>
