@@ -14,8 +14,6 @@ class ProfilesController extends Controller
     public function index(User $user)
     {
 
-        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
-
         $postCount = Cache::remember('count.posts.'. $user->id,
             now()->addSecond(30),
 
@@ -36,7 +34,7 @@ class ProfilesController extends Controller
                 return $user->following->count();
             });
 
-        return view('profiles/index',compact('user','follows','postCount','followersCount','followingCount'));
+        return view('profiles/index',compact('user','postCount','followersCount','followingCount'));
     }
 
     public function edit(User $user)

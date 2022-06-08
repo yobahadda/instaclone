@@ -13,8 +13,9 @@
                         <img class="rounded-circle w-100" src="{{ $post->user->profile->profileImage()}}" alt="" style="max-width: 40px">
                     </div>
                     <div>
-                        <div class="fw-bold"><a  class="text-decoration-none" href=/profile/{{$post->user->id}}><span class="text-dark">{{$post->user->username}}</span></a>
-                            <a class="text-decoration-none ps-3" href="#">Follow</a>
+                        <div class="fw-bold d-flex">
+                            <a  class="text-decoration-none" href=/profile/{{$post->user->id}}><span class="text-dark">{{$post->user->username}}</span></a>
+                            <follow-button user-id="{{ $post->user->id }}" follows="{{ $post->user->follows() }}"></follow-button>
                         </div>
                     </div>
                 </div>

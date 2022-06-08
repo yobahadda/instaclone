@@ -74,6 +74,11 @@ class User extends Authenticatable
 
     }
 
+    public function follows(){
+
+        return (auth()->user()) ? auth()->user()->following->contains($this->id) : false;
+
+    }
 
     public function posts(){
 
