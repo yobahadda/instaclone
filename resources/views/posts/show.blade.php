@@ -42,7 +42,8 @@
                         </div>
 
                     @endforeach
-                <a href="/c/create">Add comment</a>
+
+                <x-comment-button :post="$post"/>
             </div>
         </div>
     </div>
