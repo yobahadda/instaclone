@@ -35,7 +35,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+
+
+
+                    <ul class="navbar-nav  ms-auto">
+
+                        <form action="/profile/search"  method="post">
+                            @csrf
+
+                                <input  name="searchname"  id="searchname"  type="text"  placeholder="searchuser"/>
+
+                        </form>
+
 
                     </ul>
 
@@ -56,7 +67,7 @@
                         @endif
                         @else
 
-                            <div class="d-flex align-items-baseline ">
+                            <div class="d-flex align-items-baseline">
                                 <a class="text-decoration-none" href="/">Home</a>
 
                                 <li class="nav-item dropdown">
@@ -95,3 +106,9 @@
 </body>
 
 </html>
+<script>
+    import SearchBar from "../../js/components/SearchBar";
+    export default {
+        components: {SearchBar}
+    }
+</script>

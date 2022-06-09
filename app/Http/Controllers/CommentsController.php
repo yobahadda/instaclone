@@ -37,8 +37,10 @@ class CommentsController extends Controller
 
         Comment::find($id)->delete();
 
-      return redirect()->back();;;
+      return redirect()->back();
 
     }
+
+
 
 }
