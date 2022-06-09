@@ -90,6 +90,7 @@ class ProfilesController extends Controller
         $user  = User::query()
             ->where('username', 'LIKE', "%$username%")
             ->orwhere('username', $username)
+            ->orderBy('username')
             ->get()->first();
 
         if($user){

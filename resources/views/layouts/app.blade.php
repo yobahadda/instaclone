@@ -37,12 +37,13 @@
                     <!-- Left Side Of Navbar -->
 
 
-                    <ul class="navbar-nav">
+
+                    <ul class="navbar-nav  ms-auto">
 
                         <form action="/profile/search"  method="post">
                             @csrf
 
-                            <input  name="searchname"  id="searchname"  type="text"  placeholder="searchuser"/>
+                                <input  name="searchname"  id="searchname"  type="text"  placeholder="searchuser"/>
 
                         </form>
 
