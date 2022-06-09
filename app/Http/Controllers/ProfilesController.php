@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
+
 class ProfilesController extends Controller
 {
     //
 
-    public function index(User $user)
+
+    public function index(User $user,Request $request)
     {
+
 
         $postCount = Cache::remember('count.posts.'. $user->id,
             now()->addSecond(30),
@@ -78,6 +81,23 @@ class ProfilesController extends Controller
         ));
 
         return redirect("/profile/{$user->id}");
+    }
+
+    public function search(Request $request)
+    {
+        $username = $request->get('searchname');
+
+        $user  = User::query()
+            ->where('username', 'LIKE', "%$username%")
+            ->orwhere('username', $username)
+            ->get()->first();
+
+        if($user){
+            return redirect("/profile/{$user->id}");
+        }
+
+        else return redirect()->back();
+
     }
 
 

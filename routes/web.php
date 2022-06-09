@@ -37,8 +37,15 @@ Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
+Route::post('/profile/search/',  [App\Http\Controllers\ProfilesController::class,'search']);
+
+
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
 
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
+
+Route::fallback(function() {
+   return abort(404);
+});
