@@ -16,16 +16,14 @@ class LikesController extends Controller
         $user =  auth()->user();
 
 
-
         $table = DB::table('likes');
 
         $dislike = $table->where( 'user_id' , $user->id)->where('post_id' , $post_id)->value('is_dislike');
 
+        if ($dislike == 1 ) $dislike = 0;
+        else $dislike = 1;
 
-        if ($dislike == 0 ) $dislike = 1;
-        else $dislike = 0;
-
-        $table->updateOrInsert([ 'user_id' =>  $user->id ,'post_id' =>  $post_id  ], [
+        $table->updateOrInsert([ 'user_id' =>  $user->id ,'post_id' =>  $post_id ], [
             'user_id' => $user->id,
             'post_id'=> $post_id,
             'is_dislike'=> $dislike,

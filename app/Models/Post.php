@@ -28,7 +28,7 @@ class Post extends Model
     }
 
     public function countLikes(){
-        return  Like::where('is_dislike', '0')->count();;
+        return  Like::where('is_dislike', '1')->where('post_id', $this->id)->count();;
     }
 
 

@@ -6,16 +6,6 @@
         <div class="col-8">
                <img class="w-100" src="/storage/{{$post->image}}" alt="">
 
-
-
-            @if(auth()->user())
-                <form action="{{route('post.like', ['post_id' => $post->id ])}}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <button class="btn btn-primary">like</button>
-            @endif
-
-                {{$post->countLikes()}}
         </div>
         <div class="col-4">
             <div>
@@ -27,6 +17,16 @@
                         <div class="fw-bold d-flex  justify-content-between " style="width: 70%">
 
                                 <a  class="text-decoration-none" href=/profile/{{$post->user->id}}><span class="text-dark">{{$post->user->username}}</span></a>
+
+
+                            <div>
+                                    <form action="{{route('post.like', ['post_id' => $post->id ])}}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="btn btn-primary">like</button>
+
+                                        {{$post->countLikes()}}
+                            </div>
 
                                 @if($post->user_id != auth()->user()->id)
                                     <follow-button user-id="{{ $post->user->id }}" follows="{{ $post->user->follows() }}"></follow-button>
@@ -42,7 +42,6 @@
                                         </button>
                                     </form>
                                 @endif
-
 
 
 

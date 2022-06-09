@@ -29,13 +29,13 @@ Route::delete('/c/delete/{id}',  [App\Http\Controllers\CommentsController::class
 
 Route::post('/c', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');
 
-Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
-
 Route::delete('/p/delete/{id}',  [App\Http\Controllers\PostsController::class,'delete']);
 
-Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
+Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
 
 Route::put('/p/like/', [App\Http\Controllers\LikesController::class, 'store'])->name('post.like');
+
+Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
