@@ -8,3 +8,24 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+.deleteButton{
+
+    outline: none ;
+    background: none;
+    border: none;
+}
+
+
+.deleteSvg{
+    fill: grey;
+}
+
+.deleteButton:hover .deleteSvg {
+
+    cursor: pointer;
+    fill: red;
+}
+

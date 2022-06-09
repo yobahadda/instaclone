@@ -11973,3 +11973,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.deleteButton {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.deleteSvg {
+  fill: grey;
+}
+
+.deleteButton:hover .deleteSvg {
+  cursor: pointer;
+  fill: red;
+}
