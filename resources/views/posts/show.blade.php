@@ -5,6 +5,17 @@
     <div class="row">
         <div class="col-8">
                <img class="w-100" src="/storage/{{$post->image}}" alt="">
+
+
+
+            @if(auth()->user())
+                <form action="{{route('post.like', ['post_id' => $post->id ])}}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <button class="btn btn-primary">like</button>
+            @endif
+
+                {{$post->countLikes()}}
         </div>
         <div class="col-4">
             <div>

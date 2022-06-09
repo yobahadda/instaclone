@@ -22,4 +22,17 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function likes(){
+
+        return $this->belongsToMany(User::class, 'likes')->withPivot('is_dislike')->withTimestamps();
+    }
+
+    public function countLikes(){
+        return  Like::where('is_dislike', '0')->count();;
+    }
+
+
+
+
+
 }
