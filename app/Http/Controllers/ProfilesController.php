@@ -16,26 +16,28 @@ class ProfilesController extends Controller
     public function index(User $user,Request $request)
     {
 
-
-        $postCount = Cache::remember('count.posts.'. $user->id,
-            now()->addSecond(30),
-
-            function () use ($user){
-            return $user->posts->count();
-        });
-
-        $followersCount = Cache::remember('count.followers.'. $user->id,
-            now()->addSecond(30),
-
-            function () use ($user){
-                return $user->profile->followers->count();
-            });
-
-        $followingCount = Cache::remember('count.following.'. $user->id,
-            now()->addSecond(30),
-            function () use ($user){
-                return $user->following->count();
-            });
+        $postCount = $user->posts->count();
+        $followersCount = $user->profile->followers->count();
+        $followingCount =  $user->following->count();
+//        $postCount = Cache::remember('count.posts.'. $user->id,
+//            now()->addSecond(30),
+//
+//            function () use ($user){
+//            return $user->posts->count();
+//        });
+//
+//        $followersCount = Cache::remember('count.followers.'. $user->id,
+//            now()->addSecond(30),
+//
+//            function () use ($user){
+//                return $user->profile->followers->count();
+//            });
+//
+//        $followingCount = Cache::remember('count.following.'. $user->id,
+//            now()->addSecond(30),
+//            function () use ($user){
+//                return $user->following->count();
+//            });
 
         return view('profiles/index',compact('user','postCount','followersCount','followingCount'));
     }
@@ -90,6 +92,8 @@ class ProfilesController extends Controller
         $user  = User::query()
             ->where('username', 'LIKE', "%$username%")
             ->orwhere('username', $username)
+            ->orwhere('name', 'LIKE', "%$username%")
+            ->orwhere('name', $username)
             ->orderBy('username')
             ->get()->first();
 

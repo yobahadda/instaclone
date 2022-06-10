@@ -13,7 +13,9 @@
                     <div class="d-flex align-items-center pb-3">
                         <div class="h4">{{ $user->username }}</div>
 
+                        @if(auth()->user()->id != $user->id)
                         <follow-button user-id="{{ $user->id }}" follows="{{ $user->follows() }}"></follow-button>
+                            @endif
                     </div>
 
                     @can('update',$user->profile)
